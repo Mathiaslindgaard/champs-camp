@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react'
+
 interface Props {
   variant: 'green' | 'amber' | 'red' | 'gray'
-  children: React.ReactNode
+  children: ReactNode
   className?: string
 }
 

@@ -1,12 +1,15 @@
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
+
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'ghost'
   size?: 'sm' | 'md'
+  children?: ReactNode
 }
 
 const VARIANTS = {
-  primary: 'bg-cc-orange text-cc-black font-bold hover:bg-cc-orange-dark active:scale-95',
-  outline: 'border border-cc-orange/40 text-cc-orange hover:border-cc-orange active:scale-95',
-  ghost:   'border border-cc-black-border text-cc-gray hover:text-cc-white active:scale-95',
+  primary: 'bg-cc-orange text-cc-black font-bold hover:bg-cc-orange-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-cc-orange focus-visible:ring-offset-2 focus-visible:ring-offset-cc-black',
+  outline: 'border border-cc-orange/40 text-cc-orange hover:border-cc-orange active:scale-95 focus-visible:ring-2 focus-visible:ring-cc-orange focus-visible:ring-offset-2 focus-visible:ring-offset-cc-black',
+  ghost:   'border border-cc-black-border text-cc-gray hover:text-cc-white active:scale-95 focus-visible:ring-2 focus-visible:ring-cc-gray focus-visible:ring-offset-2 focus-visible:ring-offset-cc-black',
 }
 
 const SIZES = {
@@ -23,7 +26,7 @@ export default function Button({
 }: Props) {
   return (
     <button
-      className={`font-dm font-semibold transition-all min-h-0 ${VARIANTS[variant]} ${SIZES[size]} ${className}`}
+      className={`font-dm font-semibold transition-[background-color,border-color,color,transform] min-h-0 ${VARIANTS[variant]} ${SIZES[size]} ${className}`}
       {...props}
     >
       {children}
