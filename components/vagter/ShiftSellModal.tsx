@@ -32,7 +32,7 @@ export default function ShiftSellModal({ isOpen, onClose, onConfirm }: Props) {
               <button
                 key={u}
                 onClick={() => setUrgency(u)}
-                className={`flex-1 py-2 rounded-xl text-[12px] font-semibold font-dm border transition-colors min-h-0 ${
+                className={`flex-1 py-2 rounded-xl text-[12px] font-semibold font-dm border transition-[background-color,border-color,color] min-h-0 hover:text-cc-white active:scale-95 focus-visible:ring-2 focus-visible:ring-cc-orange focus-visible:ring-offset-1 focus-visible:ring-offset-cc-black outline-none ${
                   urgency === u
                     ? u === 'urgent'
                       ? 'bg-cc-red/20 border-cc-red text-cc-red'
