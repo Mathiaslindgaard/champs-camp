@@ -27,7 +27,7 @@ export default function KalenderPage() {
 
   function handleBook() {
     if (!selected) return
-    setBookedIds(prev => new Set(Array.from(prev).concat(selected.id)))
+    setBookedIds(prev => new Set([...prev, selected.id]))
     setCounts(prev => ({ ...prev, [selected.id]: (prev[selected.id] ?? 0) + 1 }))
     setSelected(null)
   }

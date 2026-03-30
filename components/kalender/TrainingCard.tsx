@@ -19,7 +19,7 @@ export default function TrainingCard({ session, isBooked, bookedCount, onClick }
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left bg-cc-black-card border border-cc-black-border rounded-xl p-3 flex gap-3 items-start active:opacity-80 transition-opacity ${
+      className={`w-full text-left bg-cc-black-card border border-cc-black-border rounded-xl p-3 flex gap-3 items-start hover:brightness-105 active:opacity-80 focus-visible:ring-2 focus-visible:ring-cc-orange focus-visible:ring-offset-1 focus-visible:ring-offset-cc-black transition-[opacity,filter] outline-none ${
         needsVolunteer ? 'border-l-2 border-l-cc-orange' : ''
       }`}
     >
