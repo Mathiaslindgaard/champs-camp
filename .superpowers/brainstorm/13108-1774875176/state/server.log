@@ -1,0 +1,7 @@
+{"type":"server-started","port":50906,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:50906","screen_dir":"/Users/mathiaslindgaard/projects/websites/champs-camp-aarhus/.superpowers/brainstorm/13108-1774875176/content","state_dir":"/Users/mathiaslindgaard/projects/websites/champs-camp-aarhus/.superpowers/brainstorm/13108-1774875176/state"}
+{"type":"screen-added","file":"/Users/mathiaslindgaard/projects/websites/champs-camp-aarhus/.superpowers/brainstorm/13108-1774875176/content/welcome.html"}
+{"type":"screen-added","file":"/Users/mathiaslindgaard/projects/websites/champs-camp-aarhus/.superpowers/brainstorm/13108-1774875176/content/approaches.html"}
+{"type":"screen-added","file":"/Users/mathiaslindgaard/projects/websites/champs-camp-aarhus/.superpowers/brainstorm/13108-1774875176/content/design-architecture.html"}
+{"type":"screen-added","file":"/Users/mathiaslindgaard/projects/websites/champs-camp-aarhus/.superpowers/brainstorm/13108-1774875176/content/design-screens.html"}
+{"type":"screen-added","file":"/Users/mathiaslindgaard/projects/websites/champs-camp-aarhus/.superpowers/brainstorm/13108-1774875176/content/design-screens-v2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

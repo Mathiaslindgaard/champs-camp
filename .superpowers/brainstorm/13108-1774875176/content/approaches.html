@@ -1,0 +1,42 @@
+<h2>Prototype Approach</h2>
+<p class="subtitle">Which strategy for building the "show the club" version?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Next.js + hardcoded mock data</h3>
+      <p>Full Next.js app with all 6 tabs, real design system, and hardcoded seed data (the members, sessions, events from the PRD). Deploy to Vercel — club tries it on their phones. When approved, swap mock data for real Supabase calls. <strong>Same codebase, no throwaway work.</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Deployable to Vercel immediately</li><li>Real mobile experience</li><li>Zero throwaway code — database wiring is additive</li><li>Looks and feels like the real thing</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More setup than plain HTML</li><li>Interactions are visual only (booking a session doesn't "save")</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Next.js + localStorage state</h3>
+      <p>Same as A but button presses actually persist locally. Book a session and the count goes up. Mark a shift as available and it appears in the list. Data lives in the browser — resets if you clear it.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>More convincing interactions</li><li>Multiple people can "try" it independently</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>More implementation work now</li><li>localStorage logic gets thrown away when real DB lands</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Vanilla HTML/CSS/JS</h3>
+      <p>Static prototype, fastest to build. But no routing, no mobile-native feel, and you'd be throwing it all away when building the real app.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Fastest to produce</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Doesn't feel like a real app on mobile</li><li>100% throwaway code</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:1.5rem">My recommendation: <strong>Option A</strong> — builds the real foundation, ships to Vercel, and requires zero rework when the club says yes.</p>

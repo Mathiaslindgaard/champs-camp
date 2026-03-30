@@ -1,0 +1,58 @@
+<h2>Design: Architecture & Data Layer</h2>
+<p class="subtitle">How the prototype is structured — confirm before we write the plan</p>
+
+<div class="section">
+  <h3>Tech Stack</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:0.9rem">
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+      <td style="padding:8px 0;opacity:0.6;width:140px">Framework</td>
+      <td style="padding:8px 0">Next.js 14 (App Router) + TypeScript</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+      <td style="padding:8px 0;opacity:0.6">Styling</td>
+      <td style="padding:8px 0">Tailwind CSS + CSS custom properties (brand colors)</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+      <td style="padding:8px 0;opacity:0.6">Fonts</td>
+      <td style="padding:8px 0">Bebas Neue (headings/numbers) + DM Sans (body)</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+      <td style="padding:8px 0;opacity:0.6">Data</td>
+      <td style="padding:8px 0">Hardcoded TypeScript mock data (<code>lib/mock-data.ts</code>)</td>
+    </tr>
+    <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+      <td style="padding:8px 0;opacity:0.6">State</td>
+      <td style="padding:8px 0">React <code>useState</code> — interactions work visually within a session</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 0;opacity:0.6">Deployment</td>
+      <td style="padding:8px 0">Vercel (push to GitHub → auto-deploy)</td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <h3>Mock Data Strategy</h3>
+  <p>All seed data from the PRD lives in <code>lib/mock-data.ts</code> — members, sessions, events, shifts, handbook entries, chat messages. The app imports this directly, no database calls.</p>
+  <p style="margin-top:0.75rem">When the club approves and we add Supabase, we replace each mock import with a real <code>supabase.from(...).select()</code> call. The components themselves don't change.</p>
+</div>
+
+<div class="section">
+  <h3>Interaction Behaviour</h3>
+  <p>UI state is managed with <code>useState</code> in each page component. This means:</p>
+  <ul style="margin-top:0.5rem;line-height:2">
+    <li>✅ Booking a session updates the count on screen</li>
+    <li>✅ Taking a shift removes it from the available list</li>
+    <li>✅ Secret handbook entries reveal/hide on tap</li>
+    <li>✅ Workout generator produces a plan</li>
+    <li>✅ Chat shows messages (pre-seeded, can type new ones in session)</li>
+    <li>⚠️ Nothing persists on page refresh — fine for a demo</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>No Auth for Prototype</h3>
+  <p>The prototype shows the <strong>Mathias L. (admin)</strong> view by default — all role-gated features are visible. A simple role switcher in the header lets you preview other roles (member, volunteer, trainer) to demo the access differences to the club.</p>
+</div>
+
+<p class="subtitle" style="margin-top:1rem">Does this architecture look right?</p>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Screen Design</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #111;
+    color: #fff;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    padding: 2rem;
+  }
+  h2 { font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .subtitle { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+
+  .phone-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .phone {
+    width: 200px;
+    border-radius: 28px;
+    border: 2px solid #333;
+    background: #0d0d0d;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .phone-header {
+    background: #1a1a1a;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+  }
+  .phone-logo {
+    font-family: 'Bebas Neue', impact, sans-serif;
+    font-size: 13px;
+    color: #F5A623;
+    letter-spacing: 0.05em;
+  }
+  .phone-icons { display: flex; gap: 8px; align-items: center; }
+  .bell { font-size: 14px; }
+  .avatar {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #F5A623; color: #000;
+    font-size: 9px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .phone-body {
+    padding: 12px;
+    min-height: 320px;
+  }
+
+  .phone-nav {
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0 10px;
+  }
+  .nav-item {
+    display: flex; flex-direction: column; align-items: center;
+    font-size: 7px; gap: 3px;
+    color: #666;
+  }
+  .nav-item.active { color: #F5A623; }
+  .nav-icon { font-size: 14px; }
+
+  /* Kalender screen */
+  .day-header {
+    font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: #666; margin-bottom: 6px; margin-top: 10px;
+  }
+  .session-card {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .session-time {
+    font-family: 'Bebas Neue', impact, sans-serif;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1;
+    min-width: 34px;
+  }
+  .session-info { flex: 1; }
+  .session-title { font-size: 9px; font-weight: 600; color: #fff; }
+  .session-meta { font-size: 7px; color: #888; margin-top: 2px; }
+  .badge {
+    font-size: 7px; padding: 1px 5px; border-radius: 4px;
+    font-weight: 700; margin-top: 3px; display: inline-block;
+  }
+  .badge-green { background: #1a3a1a; color: #4CAF50; }
+  .badge-amber { background: #3a2e10; color: #F5A623; }
+  .badge-red { background: #3a1010; color: #E03A3A; }
+
+  /* Stævner screen */
+  .event-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-left: 3px solid #F5A623;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+  .event-tag { font-size: 7px; color: #F5A623; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .event-title { font-family: 'Bebas Neue', impact, sans-serif; font-size: 16px; letter-spacing: 0.03em; line-height: 1; }
+  .event-loc { font-size: 7px; color: #888; margin-top: 3px; }
+  .fighters { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+  .fighter-pill {
+    background: #2a1a00; border: 1px solid #F5A623;
+    color: #F5A623; border-radius: 999px;
+    font-size: 7px; padding: 2px 6px;
+  }
+  .event-btn {
+    background: #F5A623; color: #000; border-radius: 6px;
+    font-size: 8px; font-weight: 700; padding: 5px 10px;
+    margin-top: 8px; display: inline-block;
+  }
+
+  /* Vagter screen */
+  .section-label {
+    font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: #666; margin-bottom: 6px;
+  }
+  .shift-card {
+    background: #222; border: 1px solid #333; border-radius: 8px;
+    padding: 8px 10px; margin-bottom: 6px;
+  }
+  .shift-urgent { border-color: #E03A3A; border-left: 3px solid #E03A3A; }
+  .shift-title { font-size: 9px; font-weight: 600; }
+  .shift-meta { font-size: 7px; color: #888; margin-top: 2px; }
+  .shift-btn {
+    background: transparent; border: 1px solid #F5A623;
+    color: #F5A623; border-radius: 5px;
+    font-size: 7px; padding: 3px 8px; margin-top: 6px;
+    display: inline-block;
+  }
+
+  /* Chat screen */
+  .channel-item {
+    display: flex; gap: 8px; align-items: center;
+    padding: 8px 0; border-bottom: 1px solid #1f1f1f;
+  }
+  .channel-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #333; display: flex; align-items: center;
+    justify-content: center; font-size: 12px; flex-shrink: 0;
+  }
+  .channel-name { font-size: 9px; font-weight: 600; }
+  .channel-preview { font-size: 7px; color: #888; margin-top: 1px; }
+  .unread-badge {
+    background: #F5A623; color: #000; border-radius: 999px;
+    font-size: 7px; font-weight: 700; padding: 1px 5px;
+    margin-left: auto; flex-shrink: 0;
+  }
+
+  .screen-label {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600&display=swap');
+</style>
+</head>
+<body>
+
+<h2>Screen Mockups</h2>
+<p class="subtitle">All 6 tabs — dark-first design, orange accents, Bebas Neue for numbers/titles</p>
+
+<div class="phone-row">
+
+  <!-- KALENDER -->
+  <div>
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-logo">CHAMPS CAMP</div>
+        <div class="phone-icons"><div class="bell">🔔</div><div class="avatar">ML</div></div>
+      </div>
+      <div class="phone-body">
+        <div class="day-header">Mandag 30. marts</div>
+        <div class="session-card">
+          <div class="session-time">17:30</div>
+          <div class="session-info">
+            <div class="session-title">Motionshold</div>
+            <div class="session-meta">Hal 1 · Thomas B.</div>
+            <div class="badge badge-green">8/20</div>
+          </div>
+        </div>
+        <div class="session-card">
+          <div class="session-time">19:00</div>
+          <div class="session-info">
+            <div class="session-title">Kampboksning</div>
+            <div class="session-meta">Hal 1 · Sofie M.</div>
+            <div class="badge badge-amber">Vagt søges</div>
+          </div>
+        </div>
+        <div class="day-header">Tirsdag 31. marts</div>
+        <div class="session-card">
+          <div class="session-time">17:30</div>
+          <div class="session-info">
+            <div class="session-title">Teknisk træning</div>
+            <div class="session-meta">Hal 1 · Thomas B.</div>
+            <div class="badge badge-red">Fuldt</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-item active"><div class="nav-icon">📅</div>Kalender</div>
+        <div class="nav-item"><div class="nav-icon">🥊</div>Stævner</div>
+        <div class="nav-item"><div class="nav-icon">🔄</div>Vagter</div>
+        <div class="nav-item"><div class="nav-icon">💬</div>Chat</div>
+        <div class="nav-item"><div class="nav-icon">📖</div>Håndbog</div>
+        <div class="nav-item"><div class="nav-icon">⚡</div>Træner</div>
+      </div>
+    </div>
+    <div class="screen-label">Kalender</div>
+  </div>
+
+  <!-- STÆVNER -->
+  <div>
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-logo">CHAMPS CAMP</div>
+        <div class="phone-icons"><div class="bell">🔔</div><div class="avatar">ML</div></div>
+      </div>
+      <div class="phone-body">
+        <div class="event-card">
+          <div class="event-tag">🥊 DaBu · 12. april</div>
+          <div class="event-title">FYNS OPEN CHAMPIONSHIP</div>
+          <div class="event-loc">📍 Odense</div>
+          <div class="fighters">
+            <div class="fighter-pill">Lucas N. · 64kg</div>
+            <div class="fighter-pill">Emil R. · 75kg</div>
+          </div>
+          <div class="event-btn">Støt holdet →</div>
+        </div>
+        <div class="event-card" style="border-left-color:#555">
+          <div class="event-tag" style="color:#888">🏠 Hjemmestævne · 3. maj</div>
+          <div class="event-title">JYLLANDSMESTERSKAB</div>
+          <div class="event-loc">📍 Aarhus</div>
+          <div class="fighters"><div class="fighter-pill" style="border-color:#555;color:#888">Ingen kæmpere endnu</div></div>
+          <div class="event-btn" style="background:#222;color:#F5A623;border:1px solid #F5A623">Tilmeld kæmper →</div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-item"><div class="nav-icon">📅</div>Kalender</div>
+        <div class="nav-item active"><div class="nav-icon">🥊</div>Stævner</div>
+        <div class="nav-item"><div class="nav-icon">🔄</div>Vagter</div>
+        <div class="nav-item"><div class="nav-icon">💬</div>Chat</div>
+        <div class="nav-item"><div class="nav-icon">📖</div>Håndbog</div>
+        <div class="nav-item"><div class="nav-icon">⚡</div>Træner</div>
+      </div>
+    </div>
+    <div class="screen-label">Stævner</div>
+  </div>
+
+  <!-- VAGTER -->
+  <div>
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-logo">CHAMPS CAMP</div>
+        <div class="phone-icons"><div class="bell">🔔</div><div class="avatar">ML</div></div>
+      </div>
+      <div class="phone-body">
+        <div class="section-label">🔴 Søges nu — akut</div>
+        <div class="shift-card shift-urgent">
+          <div class="badge badge-red" style="margin-bottom:4px">Akut</div>
+          <div class="shift-title">Motionshold</div>
+          <div class="shift-meta">Tors 2. april · 17:30</div>
+          <div class="shift-btn">Tage vagten</div>
+        </div>
+        <div class="section-label" style="margin-top:10px">Kommende vagter søges</div>
+        <div class="shift-card">
+          <div class="shift-title">Kampboksning</div>
+          <div class="shift-meta">Man 6. april · 19:00</div>
+          <div class="shift-btn">Vis interesse</div>
+        </div>
+        <div class="section-label" style="margin-top:10px">Mine vagter</div>
+        <div class="shift-card">
+          <div class="shift-title">Teknisk træning</div>
+          <div class="shift-meta">Tirs 31. marts · 17:30</div>
+          <div class="shift-btn" style="border-color:#555;color:#888">Sælg vagt</div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-item"><div class="nav-icon">📅</div>Kalender</div>
+        <div class="nav-item"><div class="nav-icon">🥊</div>Stævner</div>
+        <div class="nav-item active"><div class="nav-icon">🔄</div>Vagter</div>
+        <div class="nav-item"><div class="nav-icon">💬</div>Chat</div>
+        <div class="nav-item"><div class="nav-icon">📖</div>Håndbog</div>
+        <div class="nav-item"><div class="nav-icon">⚡</div>Træner</div>
+      </div>
+    </div>
+    <div class="screen-label">Vagter</div>
+  </div>
+
+  <!-- CHAT -->
+  <div>
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-logo">CHAMPS CAMP</div>
+        <div class="phone-icons"><div class="bell">🔔</div><div class="avatar">ML</div></div>
+      </div>
+      <div class="phone-body">
+        <div class="channel-item">
+          <div class="channel-avatar">👥</div>
+          <div style="flex:1">
+            <div class="channel-name">Motionshold</div>
+            <div class="channel-preview">Thomas: Husk wraps i morgen!</div>
+          </div>
+          <div class="unread-badge">3</div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-avatar">🥊</div>
+          <div style="flex:1">
+            <div class="channel-name">Kampboksning</div>
+            <div class="channel-preview">Sofie: Sparring kl. 19 sker</div>
+          </div>
+          <div class="unread-badge">1</div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-avatar">🏛️</div>
+          <div style="flex:1">
+            <div class="channel-name">Frivillige</div>
+            <div class="channel-preview">Kristian: Kan ikke tors...</div>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-avatar">🏠</div>
+          <div style="flex:1">
+            <div class="channel-name">Klubbestyrelse</div>
+            <div class="channel-preview">Mathias: Budget godkendt ✓</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-item"><div class="nav-icon">📅</div>Kalender</div>
+        <div class="nav-item"><div class="nav-icon">🥊</div>Stævner</div>
+        <div class="nav-item"><div class="nav-icon">🔄</div>Vagter</div>
+        <div class="nav-item active"><div class="nav-icon">💬</div>Chat<div style="position:relative;display:inline"><span style="background:#F5A623;color:#000;border-radius:999px;font-size:6px;padding:0 3px;margin-left:2px">4</span></div></div>
+        <div class="nav-item"><div class="nav-icon">📖</div>Håndbog</div>
+        <div class="nav-item"><div class="nav-icon">⚡</div>Træner</div>
+      </div>
+    </div>
+    <div class="screen-label">Chat</div>
+  </div>
+
+  <!-- HÅNDBOG -->
+  <div>
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-logo">CHAMPS CAMP</div>
+        <div class="phone-icons"><div class="bell">🔔</div><div class="avatar">ML</div></div>
+      </div>
+      <div class="phone-body">
+        <div class="section-label">🔐 Koder & adgang</div>
+        <div class="shift-card" style="cursor:pointer">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="shift-title">Alarmkode</div>
+            <div style="font-size:10px">🔒</div>
+          </div>
+          <div class="shift-meta">Tryk for at vise</div>
+        </div>
+        <div class="shift-card" style="cursor:pointer">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="shift-title">WiFi Hal 1</div>
+            <div style="font-size:10px">🔒</div>
+          </div>
+          <div class="shift-meta">Tryk for at vise</div>
+        </div>
+        <div class="section-label" style="margin-top:10px">📋 Vejledninger</div>
+        <div class="shift-card">
+          <div class="shift-title">Åbne & lukke hallen</div>
+          <div class="shift-meta" style="color:#F5A623">Tryk for at læse ▾</div>
+        </div>
+        <div class="shift-card">
+          <div class="shift-title">Førstehjælp</div>
+          <div class="shift-meta" style="color:#F5A623">Tryk for at læse ▾</div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-item"><div class="nav-icon">📅</div>Kalender</div>
+        <div class="nav-item"><div class="nav-icon">🥊</div>Stævner</div>
+        <div class="nav-item"><div class="nav-icon">🔄</div>Vagter</div>
+        <div class="nav-item"><div class="nav-icon">💬</div>Chat</div>
+        <div class="nav-item active"><div class="nav-icon">📖</div>Håndbog</div>
+        <div class="nav-item"><div class="nav-icon">⚡</div>Træner</div>
+      </div>
+    </div>
+    <div class="screen-label">Håndbog</div>
+  </div>
+
+  <!-- GENERATOR -->
+  <div>
+    <div class="phone">
+      <div class="phone-header">
+        <div class="phone-logo">CHAMPS CAMP</div>
+        <div class="phone-icons"><div class="bell">🔔</div><div class="avatar">ML</div></div>
+      </div>
+      <div class="phone-body">
+        <div style="background:#222;border:1px solid #333;border-radius:8px;padding:10px;margin-bottom:8px">
+          <div class="section-label">Træningstype</div>
+          <div style="background:#1a1a1a;border:1px solid #444;border-radius:6px;padding:6px 8px;font-size:9px;color:#fff;margin-bottom:8px">Motionshold ▾</div>
+          <div class="section-label">Varighed</div>
+          <div style="background:#1a1a1a;border:1px solid #444;border-radius:6px;padding:6px 8px;font-size:9px;color:#fff;margin-bottom:10px">90 minutter ▾</div>
+          <div style="background:#F5A623;color:#000;border-radius:6px;padding:8px;text-align:center;font-family:impact,sans-serif;font-size:13px;letter-spacing:0.05em">GENERÉR TRÆNING</div>
+        </div>
+        <div style="font-size:8px;color:#888;margin-bottom:6px">DAGENS PLAN</div>
+        <div class="shift-card" style="display:flex;gap:6px;align-items:center">
+          <div style="background:#F5A623;color:#000;border-radius:4px;font-family:impact,sans-serif;font-size:12px;padding:2px 6px;flex-shrink:0">1</div>
+          <div>
+            <div class="shift-title">Opvarmning — løb & skygge</div>
+            <div class="shift-meta">15 min</div>
+          </div>
+        </div>
+        <div class="shift-card" style="display:flex;gap:6px;align-items:center">
+          <div style="background:#333;color:#fff;border-radius:4px;font-family:impact,sans-serif;font-size:12px;padding:2px 6px;flex-shrink:0">2</div>
+          <div>
+            <div class="shift-title">Udstrækning & mobilitet</div>
+            <div class="shift-meta">15 min</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-item"><div class="nav-icon">📅</div>Kalender</div>
+        <div class="nav-item"><div class="nav-icon">🥊</div>Stævner</div>
+        <div class="nav-item"><div class="nav-icon">🔄</div>Vagter</div>
+        <div class="nav-item"><div class="nav-icon">💬</div>Chat</div>
+        <div class="nav-item"><div class="nav-icon">📖</div>Håndbog</div>
+        <div class="nav-item active"><div class="nav-icon">⚡</div>Træner</div>
+      </div>
+    </div>
+    <div class="screen-label">Træner</div>
+  </div>
+
+</div>
+
+<p style="text-align:center;color:#666;font-size:0.8rem;margin-top:2rem">All 6 tabs · Dark theme · Orange accents · Bebas Neue for numbers/titles</p>
+
+</body>
+</html>
