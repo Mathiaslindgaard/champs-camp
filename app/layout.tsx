@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Bebas_Neue, DM_Sans } from 'next/font/google'
 import './globals.css'
 import { RoleProvider } from '@/lib/role-context'
@@ -24,7 +24,11 @@ export const metadata: Metadata = {
   description: 'Klubplatform for Champs Camp Aarhus bokseklub',
 }
 
-export const viewport = 'width=device-width, initial-scale=1, viewport-fit=cover'
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

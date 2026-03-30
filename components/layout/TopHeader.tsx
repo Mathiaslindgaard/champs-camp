@@ -17,15 +17,15 @@ export default function TopHeader() {
       />
       <div className="flex items-center gap-3">
         <button
-          className="text-cc-gray hover:text-cc-white transition-colors min-h-0 p-1"
+          className="text-cc-gray hover:text-cc-white active:opacity-70 transition-colors min-h-0 p-1"
           aria-label="Notifikationer"
         >
           <Bell size={20} strokeWidth={1.5} />
         </button>
         <button
           onClick={cycleRole}
-          className="bg-cc-orange text-cc-black text-[10px] font-bold px-2.5 py-1 rounded font-dm tracking-wider min-h-0"
-          title="Skift demo-rolle"
+          className="bg-cc-orange text-cc-black text-[10px] font-bold px-2.5 py-1 rounded font-dm tracking-wider min-h-0 active:scale-95 transition-transform"
+          aria-label="Skift demo-rolle"
         >
           {roleLabel}
         </button>
