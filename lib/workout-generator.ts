@@ -1,6 +1,6 @@
-import { WorkoutBlock } from './types'
+import { WorkoutBlock, SessionType } from './types'
 
-export type TrainingType = 'motions' | 'teknisk' | 'kamp' | 'ungdom'
+export type TrainingType = SessionType
 export type Duration = 60 | 90 | 120
 
 function scale(base: number, from: Duration, to: Duration): number {

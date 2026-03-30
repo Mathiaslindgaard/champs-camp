@@ -87,8 +87,8 @@ export const SESSIONS: Session[] = [
 ].sort((a, b) => a.startsAt.getTime() - b.startsAt.getTime())
 
 export const INITIAL_BOOKINGS: Booking[] = [
-  { sessionId: SESSIONS[0].id, userId: 'mathias' },
-  { sessionId: SESSIONS[2].id, userId: 'mathias' },
+  { sessionId: 's1', userId: 'mathias' }, // Motionshold week 1
+  { sessionId: 's3', userId: 'mathias' }, // Teknisk træning week 1
 ]
 
 export const SHIFTS: Shift[] = [
