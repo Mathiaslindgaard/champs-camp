@@ -35,7 +35,7 @@ export default function MessageInput({ onSend }: Props) {
       <button
         onClick={handleSend}
         disabled={!text.trim()}
-        className="w-9 h-9 rounded-xl bg-cc-orange flex items-center justify-center disabled:opacity-30 active:scale-95 transition-[transform,opacity] min-h-0"
+        className="w-9 h-9 rounded-xl bg-cc-orange flex items-center justify-center disabled:opacity-30 hover:bg-cc-orange-dark active:scale-95 focus-visible:ring-2 focus-visible:ring-cc-orange focus-visible:ring-offset-2 focus-visible:ring-offset-cc-black-mid transition-[background-color,transform,opacity] min-h-0"
       >
         <Send size={16} className="text-cc-black" />
       </button>

@@ -10,7 +10,9 @@ interface Props {
 }
 
 export default function ChatThread({ channelId, initialMessages }: Props) {
-  const [messages, setMessages] = useState<Message[]>(initialMessages)
+  const [messages, setMessages] = useState<Message[]>(
+    initialMessages.map(m => ({ ...m, createdAt: new Date(m.createdAt) }))
+  )
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

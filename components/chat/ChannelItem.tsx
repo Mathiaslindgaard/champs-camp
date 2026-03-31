@@ -14,7 +14,7 @@ export default function ChannelItem({ channel, lastMessage }: Props) {
   return (
     <Link
       href={`/chat/${channel.id}`}
-      className="flex items-center gap-3 py-3 border-b border-cc-black-border last:border-b-0 active:opacity-70 transition-opacity min-h-0"
+      className="flex items-center gap-3 py-3 border-b border-cc-black-border last:border-b-0 hover:bg-cc-black-card active:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cc-orange transition-[background-color,opacity] min-h-0"
     >
       <div className="w-10 h-10 rounded-full bg-cc-black-card border border-cc-black-border flex items-center justify-center font-bebas text-[13px] text-cc-gray-light flex-shrink-0">
         {channel.initials}
