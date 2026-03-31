@@ -17,7 +17,7 @@ export default function WorkoutPlan({ blocks }: Props) {
       </div>
       <div className="space-y-2">
         {blocks.map(b => (
-          <WorkoutBlock key={b.order} block={b} total={blocks.length} />
+          <WorkoutBlock key={b.order} block={b} />
         ))}
       </div>
     </div>

@@ -30,7 +30,7 @@ export default function ShiftCard({ shift, mode, onTake, onInterest, onSell, has
             {fmtDate(shift.sessionDate)} · {shift.sessionTimeLabel}
           </div>
           {shift.note && (
-            <div className="text-[11px] text-cc-gray-light font-dm mt-1 italic">"{shift.note}"</div>
+            <div className="text-[11px] text-cc-gray-light font-dm mt-1 italic">&ldquo;{shift.note}&rdquo;</div>
           )}
         </div>
         {urgent && <Badge variant="red">Akut</Badge>}

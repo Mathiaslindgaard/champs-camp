@@ -2,10 +2,9 @@ import { WorkoutBlock as WB } from '@/lib/types'
 
 interface Props {
   block: WB
-  total: number
 }
 
-export default function WorkoutBlock({ block, total }: Props) {
+export default function WorkoutBlock({ block }: Props) {
   const isFirst = block.order === 1
   return (
     <div className="flex gap-3 items-center bg-cc-black-card border border-cc-black-border rounded-xl p-3">

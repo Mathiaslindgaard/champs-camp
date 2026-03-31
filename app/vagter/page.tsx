@@ -41,7 +41,7 @@ export default function VagterPage() {
   }
 
   function toggleInterest(id: string) {
-    setInterests(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n })
+    setInterests(prev => { const n = new Set(prev); if (n.has(id)) { n.delete(id) } else { n.add(id) } return n })
   }
 
   function sellShift(urgency: Urgency, note: string) {
