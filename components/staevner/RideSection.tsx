@@ -17,7 +17,7 @@ export default function RideSection({ rides, onBookRide, bookedRideId }: Props) 
     <div className="mt-4 border-t border-cc-black-border pt-4">
       <button
         onClick={() => setOpen(o => !o)}
-        className="flex items-center justify-between w-full text-[11px] font-semibold uppercase tracking-widest text-cc-gray font-dm min-h-0"
+        className="flex items-center justify-between w-full text-[11px] font-semibold uppercase tracking-widest text-cc-gray font-dm min-h-0 hover:text-cc-white active:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cc-orange transition-[color,opacity]"
       >
         <span>Kørsel ({rides.length})</span>
         {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}

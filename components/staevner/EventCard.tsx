@@ -53,7 +53,7 @@ export default function EventCard({ event }: Props) {
   const isDaBu = event.source === 'dabu'
 
   return (
-    <div className={`bg-cc-black-card rounded-xl border border-cc-black-border ${isDaBu ? 'border-l-2 border-l-cc-orange' : ''} p-4`}>
+    <div className={`bg-cc-black-card rounded-xl border-t border-r border-b border-cc-black-border ${isDaBu ? 'border-l-2 border-l-cc-orange' : 'border-l border-l-cc-black-border'} p-4`}>
       <div className="flex items-start justify-between gap-2 mb-1">
         <div className="text-[10px] font-semibold uppercase tracking-widest font-dm text-cc-orange">
           {isDaBu ? 'DaBu' : 'Hjemmestævne'} · {fmtDate(event.startsAt)} · {event.location}
@@ -65,7 +65,7 @@ export default function EventCard({ event }: Props) {
         {fighters.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">
             {fighters.map((f, i) => (
-              <FighterPill key={i} name={f.name} weightClass={f.weightClass} />
+              <FighterPill key={`${f.name}-${f.weightClass}-${i}`} name={f.name} weightClass={f.weightClass} />
             ))}
           </div>
         ) : (
