@@ -17,8 +17,8 @@ function renderMarkdown(raw: string): React.ReactNode[] {
     if (listBuffer.length === 0) return
     nodes.push(
       <ul key={`ul-${keyCounter++}`} className="list-disc list-inside space-y-1 text-cc-gray-light text-[13px] font-dm leading-relaxed">
-        {listBuffer.map((item, i) => (
-          <li key={i}>{item}</li>
+        {listBuffer.map((item) => (
+          <li key={`li-${keyCounter++}`}>{item}</li>
         ))}
       </ul>
     )

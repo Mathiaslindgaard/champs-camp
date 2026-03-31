@@ -16,6 +16,7 @@ const config: Config = {
         'cc-black-mid':    'var(--cc-black-mid)',
         'cc-black-card':   'var(--cc-black-card)',
         'cc-black-border': 'var(--cc-black-border)',
+        'cc-white':        'var(--cc-white)',
         'cc-gray':         'var(--cc-gray)',
         'cc-gray-light':   'var(--cc-gray-light)',
         'cc-red':          'var(--cc-red)',
